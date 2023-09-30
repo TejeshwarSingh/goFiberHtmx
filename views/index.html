@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reorderable Table with GoFiber & HTMX -- 001</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org"></script>
+</head>
+<body class="bg-gray-200 p-8">
+
+    <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden" id="mainTable">
+    <thead>
+        <tr class="bg-gray-800 text-white">
+            <th class="px-6 py-3 text-left cursor-pointer" hx-get="/sort/name" hx-trigger="click" hx-target="#mainTable">Name</th>
+            <th class="px-6 py-3 text-left cursor-pointer" hx-get="/sort/age" hx-trigger="click" hx-target="#mainTable">Age</th>
+            <th class="px-6 py-3 text-left cursor-pointer" hx-get="/sort/address" hx-trigger="click" hx-target="#mainTable">Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{range .Users}}
+        <tr class="text-gray-700 hover:bg-gray-100">
+            <td class="px-6 py-4">{{.Name}}</td>
+            <td class="px-6 py-4">{{.Age}}</td>
+            <td class="px-6 py-4">{{.Address}}</td>
+        </tr>
+        {{end}}
+    </tbody>
+</table>
+
+</body>
+</html>
